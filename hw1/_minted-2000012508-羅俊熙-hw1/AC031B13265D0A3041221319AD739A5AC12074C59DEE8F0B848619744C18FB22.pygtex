@@ -1,0 +1,12 @@
+\begin{Verbatim}[commandchars=\\\{\}]
+\PYG{k+kn}{import} \PYG{n+nn}{numpy} \PYG{k}{as} \PYG{n+nn}{np}
+\PYG{k}{def} \PYG{n+nf}{c}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+    \PYG{k}{def} \PYG{n+nf}{factorial}\PYG{p}{(}\PYG{n}{n}\PYG{p}{):}
+        \PYG{k}{return} \PYG{n}{np}\PYG{o}{.}\PYG{n}{prod}\PYG{p}{(}\PYG{n}{np}\PYG{o}{.}\PYG{n}{arange}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{n}\PYG{o}{+}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{n}{dtype}\PYG{o}{=}\PYG{n}{np}\PYG{o}{.}\PYG{n}{float64}\PYG{p}{))}
+    \PYG{n}{out} \PYG{o}{=} \PYG{l+m+mi}{1}
+    \PYG{k}{for} \PYG{n}{i} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,}\PYG{n}{n}\PYG{p}{):}
+        \PYG{n}{out} \PYG{o}{*=} \PYG{n}{factorial}\PYG{p}{(}\PYG{n}{i}\PYG{p}{)}
+    \PYG{k}{return} \PYG{n}{out}
+\PYG{k}{for} \PYG{n}{n} \PYG{o+ow}{in} \PYG{n+nb}{range}\PYG{p}{(}\PYG{l+m+mi}{1}\PYG{p}{,} \PYG{l+m+mi}{11}\PYG{p}{):}
+    \PYG{n+nb}{print}\PYG{p}{(}\PYG{l+s+sa}{f}\PYG{l+s+s2}{\PYGZdq{}ln det(H\PYGZus{}}\PYG{l+s+si}{\PYGZob{}}\PYG{n}{n}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{)=}\PYG{l+s+si}{\PYGZob{}}\PYG{l+m+mi}{4}\PYG{o}{*}\PYG{n}{np}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{c}\PYG{p}{(}\PYG{n}{n}\PYG{p}{))}\PYG{o}{\PYGZhy{}}\PYG{n}{np}\PYG{o}{.}\PYG{n}{log}\PYG{p}{(}\PYG{n}{c}\PYG{p}{(}\PYG{l+m+mi}{2}\PYG{o}{*}\PYG{n}{n}\PYG{p}{))}\PYG{l+s+si}{\PYGZcb{}}\PYG{l+s+s2}{\PYGZdq{}}\PYG{p}{)}
+\end{Verbatim}

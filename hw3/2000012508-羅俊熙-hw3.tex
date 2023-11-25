@@ -1,0 +1,103 @@
+\documentclass[12pt, a4paper, oneside]{article}
+\usepackage{seephy}
+\title{\textbf{Computational Physics(A) \\Assignment 2}}
+\author{Chon Hei Lo\thanks{Email: see.looooo@stu.pku.edu.cn; StudentID: 2000012508} (罗俊熙) \\ School of Physics, Peking University}
+\date{\today}
+\linespread{1.5}
+
+\newcounter{problemname}
+\begin{document}
+
+\maketitle
+
+\begin{center}
+\textit{注1: 此作业的解答如无说明，统一使用爱因斯坦求和约定。}
+\end{center}
+\section{Problems \& Solutions}
+% ==============================Problem 1==================================
+\subsection{Chebyshev 近似(15pt)}
+給出$f(x)$的3阶和5阶的 Chebyshev 近似展开，讨论及作图比较。
+$$f(x)=x^6+3x^5+4x^4+\frac13x^3+2x^2+x-10,\quad (-1\le x\le 3)$$
+
+
+% ==============================Solution 1==================================
+\textbf{Solution:}為了將定義域$[-1,3]$映射到$[-1,1]$，令$y=\frac{x-1}{2}$。對於3階來說，有：
+$$c^{(4)}_0=\frac{1}{4}\sum_{k=0}^{3}f\ab[2\cos\ab(\frac{\pi(k+1/2)}{4})+1]$$
+$$c^{(4)}_1=\frac{2}{4}\sum_{k=0}^{3}\cos\ab(\frac{\pi (k+1/2)}{4})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{4})+1]$$
+$$c^{(4)}_2=\frac{2}{4}\sum_{k=0}^{3}\cos\ab(\frac{2\pi (k+1/2)}{4})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{4})+1]$$
+$$c^{(4)}_3=\frac{2}{4}\sum_{k=0}^{3}\cos\ab(\frac{3\pi (k+1/2)}{4})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{4})+1]$$
+使用程序\file{3-1.py}計算得到：
+\begin{align*}
+    c^{(4)}_0&=369.3\\
+    c^{(4)}_1&=664.0\\
+    c^{(4)}_2&=444.0\\
+    c^{(4)}_3&= 204.7
+\end{align*}
+又有$T_0(y) = 1, T_1(y)= y, T_2(y) = 2y^2 - 1, T_3(y) = 4y^3 - 3y$
+所以
+\begin{align*}
+    S(x) &= \sum_{m=0}^3c^{(4)}_mT_m(\frac{x-1}{2}) \\ 
+         &= 369.3 + 664.0(\frac{x-1}{2}) + 444.0\ab[2\ab(\frac{x-1}{2})^2-1] + 204.7\ab[4\ab(\frac{x-1}{2})^3-3\ab(\frac{x-1}{2})] \\
+         &= 102.35x^3 - 85.05x^2 - 112.0x + 20.0
+\end{align*}
+注，由於$c^{(4)_m}$都進行了四捨五入，所以最後的結果可能會有一點誤差。\\
+對於5階來說，有：
+$$c^{(6)}_0=\frac{1}{6}\sum_{k=0}^{5}f\ab[2\cos\ab(\frac{\pi(k+1/2)}{6})+1]$$
+$$c^{(6)}_1=\frac{2}{6}\sum_{k=0}^{5}\cos\ab(\frac{\pi (k+1/2)}{6})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{6})+1]$$
+$$c^{(6)}_2=\frac{2}{6}\sum_{k=0}^{5}\cos\ab(\frac{2\pi (k+1/2)}{6})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{6})+1]$$
+$$c^{(6)}_3=\frac{2}{6}\sum_{k=0}^{5}\cos\ab(\frac{3\pi (k+1/2)}{6})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{6})+1]$$
+$$c^{(6)}_4=\frac{2}{6}\sum_{k=0}^{5}\cos\ab(\frac{4\pi (k+1/2)}{6})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{6})+1]$$
+$$c^{(6)}_5=\frac{2}{6}\sum_{k=0}^{5}\cos\ab(\frac{5\pi (k+1/2)}{6})f\ab[2\cos\ab(\frac{\pi(k+1/2)}{6})+1]$$
+使用程序\file{3-1.py}計算得到：
+過程略，結果如下：
+$$S(x) = 9 x^5 - 5 x^4 - 3.67 x^3 + 14 x^2 + x - 12.0$$
+\clearpage
+% ==============================Problem 2==================================
+\subsection{Pade近似(15pt)}
+給出$f(x)=e^x$的$(2,2)$階Pade近似。
+
+
+
+% ==============================Solution 2==================================    
+\textbf{Solution:}先對$f(x)$用泰勒展開得到$c_0=1, c_1=1, c_2=\frac12, c_3=\frac16, c_4=\frac{1}{24}$，利用課件公式，有：
+\begin{align*}
+    b_1c_2 + b_2c_1 &= -c_3 \\
+    b_1c_3 + b_2c_2 &= -c_4 \\
+    b_0c_1 + b_1c_0 &= a_1 \\
+    b_0c_2 + b_1c_1 + b_2c_0 &= a_2 \\
+\end{align*}
+解得$b_1=-\frac{1}{2}, b_2=\frac{1}{12}, a_1=\frac12, a_2=\frac{1}{12}$。
+所以有
+$$R(x)=\frac{1 + \frac{x}{2}+\frac{x^2}{12}}{1-\frac{x}{2}+\frac{x^2}{12}}$$
+\clearpage
+% ==============================Problem 3==================================
+\subsection{數值積分(35pt)}
+利用梯形法则、辛普森法则以及 Gauss-Legendre 方法，给出下面积分的数值结果:
+$$\int_1^{100}\frac{e^{-x}}{x}\dd x$$
+其中梯形法则、辛普森法的格点数分别取取为$10,100,1000$（格点包括左右端点）。Gauss Legendre 方法格点数为 $10,100$，Gauss-Legendre 节点和权重因子可以查阅文献或者调用已有的库函数，不用推算。
+
+注:要求程序明确输出，并在答案文档中明确写出这几种情况下的计算结果，至少保留\textbf{五位}有效数字。 
+
+
+% ==============================Solution 3==================================
+\textbf{Solution:}
+\clearpage
+
+% ==============================Problem 4==================================
+\subsection{样条函数在计算机绘图中的运用}
+
+
+
+% ==============================Solution 4==================================
+\textbf{Solution:}
+\clearpage
+% ==============================Problem 5==================================
+\subsection{对称矩阵特征值问题}
+
+
+% ==============================Solution 5==================================
+\textbf{Solution:}
+\clearpage
+
+
+\end{document}

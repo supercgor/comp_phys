@@ -1,0 +1,65 @@
+\ProvidesPackage{seephy}[2023/10/03 v1.0 Seephy's LaTeX package]
+% Indent first paragraph
+\usepackage{indentfirst}
+% Chinese support
+\usepackage{xeCJK}
+% use PMingLiU
+\setCJKmainfont{Songti SC}
+% Reduce page margins
+\usepackage[hmargin=2.5cm,top=2cm,bottom=1.6cm,footskip=1cm,includefoot]{geometry}
+% Math support: (env) equation align gather flalign multline
+\usepackage{amsmath}
+\allowdisplaybreaks
+% Math theorem: (env) theorem lemma corollary proof
+\usepackage{amsthm}
+% Math symbols: ?
+\usepackage{amssymb}
+% bold math: \bm
+\usepackage{bm} 
+% Include graph: (env) figure
+\usepackage{graphicx}
+% hyper Url support 
+\usepackage[pdfusetitle=true,bookmarksnumbered=true,bookmarksopen=true]{hyperref}
+\usepackage[all]{hypcap}
+% Math fonts: \mathscr \mathcal \mathbb
+\usepackage{mathrsfs}
+% table
+\usepackage{booktabs}
+
+% Better Matrix
+\usepackage{longtable}
+\usepackage{nicematrix}
+
+% Include Codes: (env) minted{Python}
+\usepackage{minted}
+% Include Codes: (env) lstlisting[languages=Python]
+\usepackage{listings}
+% Enumerate: (env) enumerate[(a)]
+\RequirePackage{enumerate}
+
+% SI-units: \qty, \si, \num
+\usepackage[unit-mode=text]{siunitx}
+% Physics writting
+% https://ctan.mirror.twds.com.tw/tex-archive/macros/latex/contrib/physics2/doc/physics2.pdf
+\usepackage{physics2}
+% ab: \ab{} \ab() \ab[]
+% ab.braket: \bra \ket \braket \ketbra \matrixel
+\usephysicsmodule{ab, ab.braket}
+
+\newcommand{\jj}{\mathrm{j}}
+\newcommand{\ii}{\mathrm{i}}
+\newcommand{\ee}{\mathrm{e}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\CC}{\mathbb{C}}
+
+\newcommand{\dd}{\mathrm{d}}
+
+\newcommand*\cs[1]{\texttt{\textbackslash #1}}
+\newcommand*\env[1]{\textit{\texttt{#1}}}
+\newcommand*\code[1]{\texttt{#1}}
+\newcommand*\file[1]{\textbf{\texttt{#1}}}
+
+\newcommand{\norm}[1]{\ab\|#1\|}
+\newcommand{\abs}[1]{\ab|#1|}
+\newcommand{\vb}[1]{\textbf{#1}}
+\newcommand{\pdv}[2]{\frac{\partial#1}{\partial#2}}
